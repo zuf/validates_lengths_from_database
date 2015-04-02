@@ -37,7 +37,7 @@ module ValidatesLengthsFromDatabase
         next unless column_limit
 
         class_eval do
-          validates_length_of column, :maximum => column_limit, :allow_blank => true
+          validates_length_of column, :maximum => column_limit, :allow_blank => true, tokenizer: lambda { |str| str.bytes }
         end
       end
 
